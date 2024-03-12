@@ -1,9 +1,9 @@
 package com.hackaton.postech.application.handlers;
 
-import com.hackaton.postech.application.exceptions.dto.CustomError;
-import com.hackaton.postech.application.exceptions.dto.DatabaseException;
-import com.hackaton.postech.application.exceptions.dto.NotFoundException;
-import com.hackaton.postech.application.exceptions.dto.ValidationError;
+import com.hackaton.postech.application.exceptions.CustomError;
+import com.hackaton.postech.application.exceptions.DatabaseException;
+import com.hackaton.postech.application.exceptions.NotFoundException;
+import com.hackaton.postech.application.exceptions.ValidationError;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
