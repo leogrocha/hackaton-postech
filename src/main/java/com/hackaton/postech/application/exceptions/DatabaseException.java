@@ -1,4 +1,4 @@
-package com.hackaton.postech.application.exceptions.dto;
+package com.hackaton.postech.application.exceptions;
 
 public class DatabaseException extends RuntimeException{
 

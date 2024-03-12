@@ -1,4 +1,4 @@
-package com.hackaton.postech.application.exceptions.dto;
+package com.hackaton.postech.application.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
