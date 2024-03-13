@@ -35,6 +35,8 @@ public class Endereco {
     @Column(name = "estado")
     private String estado;
 
+
+
     public static Endereco of(EnderecoRequestDTO request) {
         var endereco = new Endereco();
         copyProperties(request, endereco);

@@ -15,8 +15,8 @@ import static org.springframework.beans.BeanUtils.copyProperties;
 public class PredioResponseDTO {
 
     private Long id;
-    private String descricao;
-    private LocalidadeResponseDTO localidadeResponse;
+    private String nome;
+    private LocalidadeResponseDTO localidade;
 
     public static PredioResponseDTO of(Predio request) {
         var response = new PredioResponseDTO();
@@ -24,7 +24,7 @@ public class PredioResponseDTO {
 
         // Copiar as propriedades do Localidade para o LocalidadeResponseDTO
         LocalidadeResponseDTO localidadeResponseDTO = LocalidadeResponseDTO.of(request.getLocalidade());
-        response.setLocalidadeResponse(localidadeResponseDTO);
+        response.setLocalidade(localidadeResponseDTO);
         return response;
     }
 

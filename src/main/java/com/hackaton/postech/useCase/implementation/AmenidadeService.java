@@ -8,6 +8,7 @@ import com.hackaton.postech.domain.repository.AmenidadeRepository;
 import com.hackaton.postech.useCase.contract.IAmenidadeService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +18,11 @@ import java.util.List;
 public class AmenidadeService implements IAmenidadeService {
 
     private static final String AMENIDADE_NOT_FOUND = "Not found Amenidade ID: ";
+
+    @Autowired
     private final AmenidadeRepository repository;
+
+    @Autowired
     private final AmenidadeMapper amenidadeMapper;
 
 

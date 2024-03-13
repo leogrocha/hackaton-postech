@@ -15,6 +15,7 @@ import com.hackaton.postech.useCase.contract.ILocalidadeService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +25,11 @@ import java.util.List;
 public class LocalidadeService implements ILocalidadeService {
 
     private static final String LOCALIDADE_NOT_FOUND = "Not found localidade ID: ";
+
+    @Autowired
     private final LocalidadeRepository repository;
+
+    @Autowired
     private final LocalidadeMapper localidadeMapper;
 
 

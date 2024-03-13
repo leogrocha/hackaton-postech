@@ -24,7 +24,8 @@ public class Localidade {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name="endereco")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
 
     @OneToMany(mappedBy = "localidade", cascade = CascadeType.ALL)
@@ -37,7 +38,7 @@ public class Localidade {
         var localidade = new Localidade();
         copyProperties(request, localidade);
 
-        Endereco endereco = Endereco.of(request.getEnderecoRequest());
+        Endereco endereco = Endereco.of(request.getEndereco());
         localidade.setEndereco(endereco);
         return localidade;
     }

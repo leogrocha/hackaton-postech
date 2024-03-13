@@ -8,6 +8,7 @@ import com.hackaton.postech.domain.repository.PredioRepository;
 import com.hackaton.postech.useCase.contract.IPredioService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +18,11 @@ import java.util.List;
 public class PredioService implements IPredioService {
 
     private static final String PREDIO_NOT_FOUND = "Not found Predio ID: ";
+
+    @Autowired
     private final PredioRepository repository;
+
+    @Autowired
     private final PredioMapper predioMapper;
 
 

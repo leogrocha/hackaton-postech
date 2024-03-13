@@ -7,18 +7,22 @@ import com.hackaton.postech.domain.model.Endereco;
 import com.hackaton.postech.domain.repository.EnderecoRepository;
 import com.hackaton.postech.useCase.contract.IEnderecoService;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EnderecoService implements IEnderecoService {
 
     private static final String ENDERECO_NOT_FOUND = "Not found endereço ID: ";
+
+    @Autowired
     private final EnderecoRepository repository;
+
+    @Autowired
     private final EnderecoMapper enderecoMapper;
 
 

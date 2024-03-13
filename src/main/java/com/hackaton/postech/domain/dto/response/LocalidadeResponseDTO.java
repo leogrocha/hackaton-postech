@@ -17,7 +17,7 @@ public class LocalidadeResponseDTO {
 
     private Long id;
     private String nome;
-    private EnderecoResponseDTO enderecoResponse;
+    private EnderecoResponseDTO endereco;
 
     public static LocalidadeResponseDTO of(Localidade request) {
         var response = new LocalidadeResponseDTO();
@@ -25,7 +25,7 @@ public class LocalidadeResponseDTO {
 
         // Copiar as propriedades do Endereco para o EnderecoResponseDTO
         EnderecoResponseDTO enderecoResponseDTO = EnderecoResponseDTO.of(request.getEndereco());
-        response.setEnderecoResponse(enderecoResponseDTO);
+        response.setEndereco(enderecoResponseDTO);
 
         return response;
     }

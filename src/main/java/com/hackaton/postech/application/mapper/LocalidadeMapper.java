@@ -5,8 +5,10 @@ import com.hackaton.postech.domain.dto.response.LocalidadeResponseDTO;
 import com.hackaton.postech.domain.model.Localidade;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
+@Component
 public interface LocalidadeMapper {
 
     @Mapping(target = "id", source = "localidade.id")
