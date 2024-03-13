@@ -1,0 +1,1 @@
+insert into tb_client (name, passport, birth_date, country_of_origin, document, email,phone) values ('Seu Madruga', null, '1970-01-01', 'Brazil', '12345678899', 'contato@hotmail.com', '35988774455' )

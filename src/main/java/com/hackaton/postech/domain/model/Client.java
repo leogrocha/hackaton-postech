@@ -1,8 +1,9 @@
 package com.hackaton.postech.domain.model;
 
+import com.hackaton.postech.domain.dto.request.ClientRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDate;
 
@@ -21,10 +22,13 @@ public class Client {
     private Long clientId;
     private String countryOfOrigin;
     private String document;
-    private String passaport;
+    private String passport;
     private String name;
+    @Column(columnDefinition = "DATE")
     private LocalDate birthDate;
 //    private Address address;
     private String phone;
     private String email;
+
+
 }
