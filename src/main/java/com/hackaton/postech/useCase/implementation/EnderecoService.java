@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class EnderecoService implements IEnderecoService {
 
-    private static final String ITEM_NOT_FOUND = "Not found endereço ID: ";
+    private static final String ENDERECO_NOT_FOUND = "Not found endereço ID: ";
     private final EnderecoRepository repository;
     private final EnderecoMapper enderecoMapper;
 
@@ -56,6 +56,6 @@ public class EnderecoService implements IEnderecoService {
 
     private Endereco findById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(ITEM_NOT_FOUND + id));
+                .orElseThrow(() -> new EntityNotFoundException(ENDERECO_NOT_FOUND + id));
     }
 }
