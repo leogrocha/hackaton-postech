@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("hackaton/Amenidades")
+@RequestMapping("hackaton/amenidades")
 public class AmenidadeController implements IAmenidadeController {
 
     private final IAmenidadeService service;

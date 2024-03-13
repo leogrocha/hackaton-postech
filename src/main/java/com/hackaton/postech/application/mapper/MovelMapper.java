@@ -21,6 +21,5 @@ public interface MovelMapper {
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "descricao", source = "movelRequest.descricao")
-    @Mapping(target = "localidade", source = "movelRequest.localidade")
     Movel convertToMovelWithId(MovelRequestDTO movelRequest, Long id);
 }

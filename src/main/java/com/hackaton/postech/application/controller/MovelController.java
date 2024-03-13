@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("hackaton/Moveis")
+@RequestMapping("hackaton/moveis")
 public class MovelController implements IMovelController {
 
     private final IMovelService service;

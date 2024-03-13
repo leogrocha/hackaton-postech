@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("hackaton/Moveis")
+@RequestMapping("hackaton/quartos")
 public class QuartoController implements IQuartoController {
 
     private final IQuartoService service;

@@ -18,5 +18,4 @@ public interface IMovelService {
 
     void deleteById(Long id);
 
-    List<Movel> obterOuCriarMoveisPadrao(List<String> nomesMoveisPadrao);
 }

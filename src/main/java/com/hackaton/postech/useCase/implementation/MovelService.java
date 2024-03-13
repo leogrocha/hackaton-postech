@@ -21,14 +21,21 @@ public class MovelService implements IMovelService {
 
     private static final String MOVEL_NOT_FOUND = "Not found movel ID: ";
 
+
+    private static MovelRepository repository;
+
     @Autowired
-    private final MovelRepository repository;
+    public void setRepository(MovelRepository repository) {
+        MovelService.repository = repository;
+    }
 
     @Autowired
     private final MovelMapper movelMapper;
 
-    @Override
-    public List<Movel> obterOuCriarMoveisPadrao(List<String> nomesMoveisPadrao) {
+
+
+
+    public static List<Movel> obterOuCriarMoveisPadrao(List<String> nomesMoveisPadrao) {
         List<Movel> moveisPadrao = new ArrayList<>();
 
         for (String nomeMovel : nomesMoveisPadrao) {

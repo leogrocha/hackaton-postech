@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("hackaton/Localidades")
+@RequestMapping("hackaton/localidades")
 public class LocalidadeController implements ILocalidadeController {
 
     private final ILocalidadeService service;

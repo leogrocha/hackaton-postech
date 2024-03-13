@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("hackaton/Predios")
+@RequestMapping("hackaton/predios")
 public class PredioController implements IPredioController {
 
     private final IPredioService service;
