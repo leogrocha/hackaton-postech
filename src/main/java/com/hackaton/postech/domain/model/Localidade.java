@@ -1,11 +1,11 @@
 package com.hackaton.postech.domain.model;
 
-import com.hackaton.postech.domain.dto.request.EnderecoRequestDTO;
 import com.hackaton.postech.domain.dto.request.LocalidadeRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 import static org.springframework.beans.BeanUtils.copyProperties;
 
@@ -27,6 +27,10 @@ public class Localidade {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco", referencedColumnName = "id")
     private Endereco endereco;
+
+    @OneToMany(mappedBy = "localidade", cascade = CascadeType.ALL)
+    private List<Amenidade> amenidades;
+
     public static Localidade of(LocalidadeRequestDTO request) {
         var localidade = new Localidade();
         copyProperties(request, localidade);

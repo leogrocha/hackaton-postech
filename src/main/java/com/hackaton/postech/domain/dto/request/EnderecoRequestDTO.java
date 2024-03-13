@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class EnderecoRequestDTO {
 
     @NotBlank(message = "Rua é obrigatória")
-    private String rua;
+    private String descricao;
 
     @NotNull(message = "Número é obrigatório")
     @PositiveOrZero(message = "Número não pode ser negativo")
