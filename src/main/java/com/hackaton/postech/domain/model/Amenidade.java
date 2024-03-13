@@ -22,7 +22,7 @@ public class Amenidade {
     @Column(name = "descricao")
     private String descricao;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_localidade")
     private Localidade localidade;
 

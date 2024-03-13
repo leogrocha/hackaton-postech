@@ -21,7 +21,7 @@ public class Predio {
     @Column(name = "nome")
     private String nome;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_localidade")
     private Localidade localidade;
 

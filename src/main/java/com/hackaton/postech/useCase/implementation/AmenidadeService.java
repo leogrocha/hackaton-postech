@@ -2,11 +2,14 @@ package com.hackaton.postech.useCase.implementation;
 
 import com.hackaton.postech.application.mapper.AmenidadeMapper;
 import com.hackaton.postech.domain.dto.request.AmenidadeRequestDTO;
+import com.hackaton.postech.domain.dto.request.LocalidadeRequestDTO;
 import com.hackaton.postech.domain.dto.response.AmenidadeResponseDTO;
+import com.hackaton.postech.domain.dto.response.LocalidadeResponseDTO;
 import com.hackaton.postech.domain.model.Amenidade;
 import com.hackaton.postech.domain.repository.AmenidadeRepository;
 import com.hackaton.postech.useCase.contract.IAmenidadeService;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,7 +50,9 @@ public class AmenidadeService implements IAmenidadeService {
 
     @Override
     public AmenidadeResponseDTO update(Long id, AmenidadeRequestDTO amenidadeRequest) {
-        getById(id);
+        AmenidadeResponseDTO existingAmenidade = getById(id);
+        LocalidadeRequestDTO newLocalidade = amenidadeRequest.getLocalidade();
+
         return amenidadeMapper.convertToAmenidadeResponseDTO(repository
                 .save(amenidadeMapper.convertToAmenidadeWithId(amenidadeRequest, id)));
     }

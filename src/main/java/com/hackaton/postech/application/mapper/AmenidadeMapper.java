@@ -5,7 +5,6 @@ import com.hackaton.postech.domain.dto.response.AmenidadeResponseDTO;
 import com.hackaton.postech.domain.model.Amenidade;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 public interface AmenidadeMapper {

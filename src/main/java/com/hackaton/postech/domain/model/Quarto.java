@@ -22,7 +22,7 @@ public class Quarto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "predio_id")
     private Predio predio;
 

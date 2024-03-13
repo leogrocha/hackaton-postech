@@ -41,13 +41,14 @@ public class QuartoService implements IQuartoService {
 
     @Override
     public QuartoResponseDTO create(QuartoRequestDTO quartoRequest) {
-        return quartoMapper.convertToQuartoResponseDTO(repository
-                .save(quartoMapper.convertToQuarto(quartoRequest)));
+        Quarto quarto = new Quarto(quartoRequest);
+        repository.save(quarto);
+        return quartoMapper.convertToQuartoResponseDTO(quarto);
     }
 
     @Override
     public QuartoResponseDTO update(Long id, QuartoRequestDTO QuartoRequest) {
-        getById(id);
+
         return quartoMapper.convertToQuartoResponseDTO(repository
                 .save(quartoMapper.convertToQuartoWithId(QuartoRequest, id)));
     }

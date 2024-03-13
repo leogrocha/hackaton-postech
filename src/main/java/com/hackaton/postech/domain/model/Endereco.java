@@ -35,6 +35,9 @@ public class Endereco {
     @Column(name = "estado")
     private String estado;
 
+    @OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL)
+    private Localidade localidade;
+
 
 
     public static Endereco of(EnderecoRequestDTO request) {
