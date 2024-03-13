@@ -24,12 +24,14 @@ public class Localidade {
     @Column(name = "nome")
     private String nome;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
+    @Column(name="endereco")
     private Endereco endereco;
 
     @OneToMany(mappedBy = "localidade", cascade = CascadeType.ALL)
     private List<Amenidade> amenidades;
+
+    @OneToMany(mappedBy = "localidade", cascade = CascadeType.ALL)
+    private List<Predio> predios;
 
     public static Localidade of(LocalidadeRequestDTO request) {
         var localidade = new Localidade();
