@@ -16,6 +16,7 @@ public class Cliente {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_cliente")
   private Long id;
   private String paisOrigem;
   private String cpf;
@@ -25,7 +26,14 @@ public class Cliente {
   private LocalDate dataNascimento;
   private String telefone;
   private String email;
-  
+
+  @OneToOne
+  @JoinColumn(name = "id_endereco")
+  private Endereco endereco;
+
+  @OneToOne
+  @JoinColumn(name = "id_reserva")
+  private Reserva reserva;
 
 
 
