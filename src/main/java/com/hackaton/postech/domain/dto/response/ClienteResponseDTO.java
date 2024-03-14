@@ -1,4 +1,4 @@
 package com.hackaton.postech.domain.dto.response;
 
-public class ClientResponseDTO {
+public class ClienteResponseDTO {
 }
