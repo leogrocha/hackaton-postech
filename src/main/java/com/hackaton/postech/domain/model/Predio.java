@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,15 +23,14 @@ public class Predio {
     @Column(name = "nome")
     private String nome;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "id_localidade")
-    private Localidade localidade;
+    @Column(name = "id_localidade")
+    private Long idLocalidade;
 
-    public static Predio of(PredioRequestDTO request, Localidade localidade) {
-        var predio = new Predio();
-        predio.setNome(request.getNome());
-        predio.setLocalidade(localidade);
-        return predio;
+    @OneToMany(mappedBy = "idPredio", cascade = CascadeType.ALL)
+    private List<Quarto> quartos;
+
+
+    public Predio(PredioRequestDTO predioRequest) {
+        this.nome = predioRequest.getNome();
     }
-
 }

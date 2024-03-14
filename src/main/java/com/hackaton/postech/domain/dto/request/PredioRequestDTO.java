@@ -17,6 +17,6 @@ public class PredioRequestDTO {
     private String nome;
 
     @NotNull(message = "Localidade é obrigatória")
-    private LocalidadeRequestDTO localidade;
+    private Long idLocalidade;
 
 }

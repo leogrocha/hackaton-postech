@@ -1,11 +1,13 @@
 package com.hackaton.postech.useCase.implementation;
 
 import com.hackaton.postech.application.mapper.AmenidadeMapper;
+import com.hackaton.postech.application.mapper.LocalidadeMapper;
 import com.hackaton.postech.domain.dto.request.AmenidadeRequestDTO;
 import com.hackaton.postech.domain.dto.request.LocalidadeRequestDTO;
 import com.hackaton.postech.domain.dto.response.AmenidadeResponseDTO;
 import com.hackaton.postech.domain.dto.response.LocalidadeResponseDTO;
 import com.hackaton.postech.domain.model.Amenidade;
+import com.hackaton.postech.domain.model.Localidade;
 import com.hackaton.postech.domain.repository.AmenidadeRepository;
 import com.hackaton.postech.useCase.contract.IAmenidadeService;
 import jakarta.persistence.EntityNotFoundException;
@@ -28,6 +30,12 @@ public class AmenidadeService implements IAmenidadeService {
     @Autowired
     private final AmenidadeMapper amenidadeMapper;
 
+    @Autowired
+    private final LocalidadeService localidadeService;
+
+    @Autowired
+    private final LocalidadeMapper localidadeMapper;
+
 
     @Override
     public List<AmenidadeResponseDTO> getAll() {
@@ -44,17 +52,16 @@ public class AmenidadeService implements IAmenidadeService {
 
     @Override
     public AmenidadeResponseDTO create(AmenidadeRequestDTO amenidadeRequest) {
-        return amenidadeMapper.convertToAmenidadeResponseDTO(repository
-                .save(amenidadeMapper.convertToAmenidade(amenidadeRequest)));
+
+        return amenidadeMapper.convertToAmenidadeResponseDTO(
+                repository.save(amenidadeMapper.convertToAmenidade(amenidadeRequest)));
     }
 
     @Override
     public AmenidadeResponseDTO update(Long id, AmenidadeRequestDTO amenidadeRequest) {
-        AmenidadeResponseDTO existingAmenidade = getById(id);
-        LocalidadeRequestDTO newLocalidade = amenidadeRequest.getLocalidade();
-
-        return amenidadeMapper.convertToAmenidadeResponseDTO(repository
-                .save(amenidadeMapper.convertToAmenidadeWithId(amenidadeRequest, id)));
+        getById(id);
+        return amenidadeMapper.convertToAmenidadeResponseDTO( repository
+                .save(amenidadeMapper.convertToAmenidadeWithId(amenidadeRequest,id)));
     }
 
     @Override

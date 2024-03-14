@@ -16,17 +16,6 @@ public class AmenidadeResponseDTO {
 
     private Long id;
     private String descricao;
-    private LocalidadeResponseDTO localidade;
-
-    public static AmenidadeResponseDTO of(Amenidade request) {
-        var response = new AmenidadeResponseDTO();
-        copyProperties(request, response);
-
-        // Copiar as propriedades do Localidade para o LocalidadeResponseDTO
-        LocalidadeResponseDTO localidadeResponseDTO = LocalidadeResponseDTO.of(request.getLocalidade());
-        response.setLocalidade(localidadeResponseDTO);
-        return response;
-    }
-
+    private Long idLocalidade;
 
 }

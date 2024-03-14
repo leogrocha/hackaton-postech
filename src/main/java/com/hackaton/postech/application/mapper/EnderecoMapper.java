@@ -25,6 +25,14 @@ public interface EnderecoMapper {
     @Mapping(target = "estado", source = "enderecoRequest.estado")
     Endereco convertToEndereco(EnderecoRequestDTO enderecoRequest);
 
+    @Mapping(target = "id", source = "enderecoResponse.id")
+    @Mapping(target = "rua", source = "enderecoResponse.rua")
+    @Mapping(target = "numero", source = "enderecoResponse.numero")
+    @Mapping(target = "bairro", source = "enderecoResponse.bairro")
+    @Mapping(target = "cidade", source = "enderecoResponse.cidade")
+    @Mapping(target = "estado", source = "enderecoResponse.estado")
+    Endereco convertToEndereco(EnderecoResponseDTO enderecoResponse);
+
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "rua", source = "enderecoRequest.rua")

@@ -12,19 +12,18 @@ import org.springframework.stereotype.Component;
 @Component
 public interface PredioMapper {
 
-    PredioMapper INSTANCE = Mappers.getMapper(PredioMapper.class);
-
     @Mapping(target = "id", source = "predio.id")
     @Mapping(target = "nome", source = "predio.nome")
-    @Mapping(target = "localidade", source = "predio.localidade")
+    @Mapping(target = "idLocalidade", source = "predio.idLocalidade")
+    @Mapping(target = "quartos", source = "predio.quartos")
     PredioResponseDTO convertToPredioResponseDTO(Predio predio);
 
     @Mapping(target = "nome", source = "predioRequest.nome")
-    @Mapping(target = "localidade", source = "predioRequest.localidade")
+    @Mapping(target = "idLocalidade", source = "predioRequest.idLocalidade")
     Predio convertToPredio(PredioRequestDTO predioRequest);
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "nome", source = "predioRequest.nome")
-    @Mapping(target = "localidade", source = "predioRequest.localidade")
+    @Mapping(target = "idLocalidade", source = "predioRequest.idLocalidade")
     Predio convertToPredioWithId(PredioRequestDTO predioRequest, Long id);
 }

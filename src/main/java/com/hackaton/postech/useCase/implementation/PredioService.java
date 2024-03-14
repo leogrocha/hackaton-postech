@@ -1,7 +1,9 @@
 package com.hackaton.postech.useCase.implementation;
 
+import com.hackaton.postech.application.mapper.LocalidadeMapper;
 import com.hackaton.postech.application.mapper.PredioMapper;
 import com.hackaton.postech.domain.dto.request.PredioRequestDTO;
+import com.hackaton.postech.domain.dto.response.LocalidadeResponseDTO;
 import com.hackaton.postech.domain.dto.response.PredioResponseDTO;
 import com.hackaton.postech.domain.model.Predio;
 import com.hackaton.postech.domain.repository.PredioRepository;
@@ -24,6 +26,12 @@ public class PredioService implements IPredioService {
 
     @Autowired
     private final PredioMapper predioMapper;
+
+    @Autowired
+    private final LocalidadeService localidadeService;
+
+    @Autowired
+    private final LocalidadeMapper localidadeMapper;
 
 
     @Override

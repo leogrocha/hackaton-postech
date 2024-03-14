@@ -1,8 +1,11 @@
 package com.hackaton.postech.domain.dto.response;
 
+import com.hackaton.postech.domain.dto.request.QuartoRequestDTO;
 import com.hackaton.postech.domain.enums.TipoQuarto;
+import com.hackaton.postech.domain.model.Movel;
 import com.hackaton.postech.domain.model.Quarto;
 
+import com.hackaton.postech.useCase.implementation.MovelService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,24 +23,19 @@ import static org.springframework.beans.BeanUtils.copyProperties;
 public class QuartoResponseDTO {
 
     private Long id;
-    private PredioResponseDTO predio;
+    private Long idPredio;
     private TipoQuarto tipoQuarto;
     private int capacidadePessoas;
     private String qtdeCamas;
     private double valorDiaria;
-    private List<MovelResponseDTO> moveis;
+    private List<Movel> moveis;
 
-    public static QuartoResponseDTO of(Quarto quarto) {
-        var response = new QuartoResponseDTO();
-        copyProperties(quarto, response);
-
-        // Convertendo a lista de Movel para List<MovelResponseDTO>
-        List<MovelResponseDTO> moveisResponseDTO = quarto.getMoveis().stream()
-                .map(MovelResponseDTO::of)
-                .collect(Collectors.toList());
-
-        response.setMoveis(moveisResponseDTO);
-
-        return response;
+    public QuartoResponseDTO (QuartoRequestDTO quartoRequestDTO) {
+        this.idPredio = quartoRequestDTO.getIdPredio();
+        this.tipoQuarto = quartoRequestDTO.getTipoQuarto();
+        this.capacidadePessoas = this.tipoQuarto.getCapacidadePessoas();
+        this.qtdeCamas = this.tipoQuarto.getQtdeCamas();
+        this.valorDiaria = this.tipoQuarto.getValorDiaria();
+        this.moveis = MovelService.obterOuCriarMoveisPadrao(this.tipoQuarto.getMoveis());
     }
 }

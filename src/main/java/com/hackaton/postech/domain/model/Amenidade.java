@@ -22,14 +22,11 @@ public class Amenidade {
     @Column(name = "descricao")
     private String descricao;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "id_localidade")
-    private Localidade localidade;
+    @Column(name = "id_localidade")
+    private Long idLocalidade;
 
-    public static Amenidade of(AmenidadeRequestDTO request, Localidade localidade) {
-        var amenidade = new Amenidade();
-        amenidade.setDescricao(request.getDescricao());
-        amenidade.setLocalidade(localidade);
-        return amenidade;
+
+    public Amenidade(AmenidadeRequestDTO amenidadeRequest) {
+        this.descricao = amenidadeRequest.getDescricao();
     }
 }

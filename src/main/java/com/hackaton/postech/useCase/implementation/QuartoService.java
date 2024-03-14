@@ -1,8 +1,11 @@
 package com.hackaton.postech.useCase.implementation;
 
+import com.hackaton.postech.application.mapper.PredioMapper;
 import com.hackaton.postech.application.mapper.QuartoMapper;
 import com.hackaton.postech.domain.dto.request.QuartoRequestDTO;
+import com.hackaton.postech.domain.dto.response.PredioResponseDTO;
 import com.hackaton.postech.domain.dto.response.QuartoResponseDTO;
+import com.hackaton.postech.domain.model.Predio;
 import com.hackaton.postech.domain.model.Quarto;
 import com.hackaton.postech.domain.repository.QuartoRepository;
 import com.hackaton.postech.useCase.contract.IQuartoService;
@@ -24,6 +27,12 @@ public class QuartoService implements IQuartoService {
 
     @Autowired
     private final QuartoMapper quartoMapper;
+
+    @Autowired
+    private final PredioService predioService;
+
+    @Autowired
+    private final PredioMapper predioMapper;
 
 
     @Override
@@ -47,10 +56,16 @@ public class QuartoService implements IQuartoService {
     }
 
     @Override
-    public QuartoResponseDTO update(Long id, QuartoRequestDTO QuartoRequest) {
+    public QuartoResponseDTO update(Long id, QuartoRequestDTO quartoRequest) {
+        getById(id);
+        QuartoResponseDTO quartoResponse = new QuartoResponseDTO(quartoRequest);
+        quartoResponse.setId(id);
 
-        return quartoMapper.convertToQuartoResponseDTO(repository
-                .save(quartoMapper.convertToQuartoWithId(QuartoRequest, id)));
+        Quarto quarto = quartoMapper.convertToQuarto(quartoResponse);
+
+        repository.save(quarto);
+
+        return quartoResponse;
     }
 
     @Override

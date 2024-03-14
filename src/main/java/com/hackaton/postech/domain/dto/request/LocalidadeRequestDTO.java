@@ -17,6 +17,6 @@ public class LocalidadeRequestDTO {
         private String nome;
 
         @NotNull(message = "Endereço é obrigatório")
-        private EnderecoRequestDTO endereco;
+        private Long idEndereco;
 
 }

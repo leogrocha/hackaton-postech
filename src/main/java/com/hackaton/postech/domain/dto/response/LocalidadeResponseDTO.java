@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 import static org.springframework.beans.BeanUtils.copyProperties;
 
 @Data
@@ -18,17 +20,6 @@ public class LocalidadeResponseDTO {
     private Long id;
     private String nome;
     private EnderecoResponseDTO endereco;
-
-    public static LocalidadeResponseDTO of(Localidade request) {
-        var response = new LocalidadeResponseDTO();
-        copyProperties(request, response);
-
-        // Copiar as propriedades do Endereco para o EnderecoResponseDTO
-        EnderecoResponseDTO enderecoResponseDTO = EnderecoResponseDTO.of(request.getEndereco());
-        response.setEndereco(enderecoResponseDTO);
-
-        return response;
-    }
-
+    private List<AmenidadeResponseDTO> amenidades;
 
 }

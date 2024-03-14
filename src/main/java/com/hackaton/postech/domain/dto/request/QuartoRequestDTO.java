@@ -23,7 +23,7 @@ import java.util.List;
 public class QuartoRequestDTO {
 
     @NotNull(message = "Prédio é obrigatório")
-    private PredioRequestDTO predio;
+    private Long idPredio;
 
     @NotNull(message = "Tipo de quarto é obrigatório")
     private TipoQuarto tipoQuarto;

@@ -11,16 +11,17 @@ public interface AmenidadeMapper {
 
     @Mapping(target = "id", source = "amenidade.id")
     @Mapping(target = "descricao", source = "amenidade.descricao")
-    @Mapping(target = "localidade", source = "amenidade.localidade")
+    @Mapping(target = "idLocalidade", source = "amenidade.idLocalidade")
     AmenidadeResponseDTO convertToAmenidadeResponseDTO(Amenidade amenidade);
 
+
     @Mapping(target = "descricao", source = "amenidadeRequest.descricao")
-    @Mapping(target = "localidade", source = "amenidadeRequest.localidade")
+    @Mapping(target = "idLocalidade", source = "amenidadeRequest.idLocalidade")
     Amenidade convertToAmenidade(AmenidadeRequestDTO amenidadeRequest);
 
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "descricao", source = "amenidadeRequest.descricao")
-    @Mapping(target = "localidade", source = "amenidadeRequest.localidade")
+    @Mapping(target = "idLocalidade", source = "amenidadeRequest.idLocalidade")
     Amenidade convertToAmenidadeWithId(AmenidadeRequestDTO amenidadeRequest, Long id);
 }

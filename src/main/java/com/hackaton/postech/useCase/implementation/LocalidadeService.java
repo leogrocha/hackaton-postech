@@ -13,9 +13,11 @@ import com.hackaton.postech.domain.repository.LocalidadeRepository;
 import com.hackaton.postech.useCase.contract.IEnderecoService;
 import com.hackaton.postech.useCase.contract.ILocalidadeService;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.ConstraintViolationException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +33,12 @@ public class LocalidadeService implements ILocalidadeService {
 
     @Autowired
     private final LocalidadeMapper localidadeMapper;
+
+    @Autowired
+    private final EnderecoService enderecoService;
+
+    @Autowired
+    private final EnderecoMapper enderecoMapper;
 
 
     @Override
@@ -48,15 +56,30 @@ public class LocalidadeService implements ILocalidadeService {
 
     @Override
     public LocalidadeResponseDTO create(LocalidadeRequestDTO localidadeRequest) {
-        return localidadeMapper.convertToLocalidadeResponseDTO(repository
-                .save(localidadeMapper.convertToLocalidade(localidadeRequest)));
+
+        try {
+            Localidade localidade = new Localidade(localidadeRequest);
+            Endereco endereco = enderecoMapper.convertToEndereco(enderecoService.getById(localidadeRequest.getIdEndereco()));
+
+            localidade.setEndereco(endereco);
+
+            repository.save(localidade);
+            return localidadeMapper.convertToLocalidadeResponseDTO(localidade);
+        } catch (DataIntegrityViolationException e) {
+            throw new RuntimeException("Localidade already exists at this address", e);
+        }
     }
 
     @Override
     public LocalidadeResponseDTO update(Long id, LocalidadeRequestDTO localidadeRequest) {
-        getById(id);
-        return localidadeMapper.convertToLocalidadeResponseDTO(repository
-                .save(localidadeMapper.convertToLocalidadeWithId(localidadeRequest, id)));
+
+        LocalidadeResponseDTO localidadeResponse = getById(id);
+        localidadeResponse.setNome(localidadeRequest.getNome());
+        localidadeResponse.setEndereco(enderecoService.getById(localidadeRequest.getIdEndereco()));
+
+        repository.save(localidadeMapper.convertToLocalidade(localidadeResponse));
+
+        return localidadeResponse;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.hackaton.postech.domain.model;
 
 import com.hackaton.postech.application.mapper.PredioMapper;
 import com.hackaton.postech.domain.dto.request.QuartoRequestDTO;
+import com.hackaton.postech.domain.dto.response.QuartoResponseDTO;
 import com.hackaton.postech.domain.enums.TipoQuarto;
 import com.hackaton.postech.useCase.implementation.MovelService;
 import jakarta.persistence.*;
@@ -22,9 +23,8 @@ public class Quarto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "predio_id")
-    private Predio predio;
+    @Column(name = "id_predio")
+    private Long idPredio;
 
     @Column(name = "tipo_quarto")
     @Enumerated(EnumType.STRING)
@@ -43,26 +43,13 @@ public class Quarto {
     @JoinColumn(name = "quarto_id")
     private List<Movel> moveis;
 
-    @Override
-    public String toString() {
-        return "Quarto{" +
-                "id=" + id +
-                ", predio=" + predio +
-                ", tipoQuarto=" + tipoQuarto +
-                ", totalPessoas=" + capacidadePessoas +
-                ", totalCamas='" + qtdeCamas + '\'' +
-                ", valorDiaria=" + valorDiaria +
-                '}';
-    }
-
     public Quarto(QuartoRequestDTO quartoRequestDTO) {
-        this.predio = PredioMapper.INSTANCE.convertToPredio(quartoRequestDTO.getPredio());
+        this.idPredio = quartoRequestDTO.getIdPredio();
         this.tipoQuarto = quartoRequestDTO.getTipoQuarto();
         this.capacidadePessoas = this.tipoQuarto.getCapacidadePessoas();
         this.qtdeCamas = this.tipoQuarto.getQtdeCamas();
         this.valorDiaria = this.tipoQuarto.getValorDiaria();
         this.moveis = MovelService.obterOuCriarMoveisPadrao(this.tipoQuarto.getMoveis());
     }
-
 }
 

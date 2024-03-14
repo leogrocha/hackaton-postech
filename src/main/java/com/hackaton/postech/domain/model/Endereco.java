@@ -35,14 +35,10 @@ public class Endereco {
     @Column(name = "estado")
     private String estado;
 
-    @OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "endereco", cascade = CascadeType.REFRESH)
     private Localidade localidade;
 
 
 
-    public static Endereco of(EnderecoRequestDTO request) {
-        var endereco = new Endereco();
-        copyProperties(request, endereco);
-        return endereco;
-    }
+
 }

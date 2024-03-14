@@ -17,6 +17,6 @@ public class AmenidadeRequestDTO {
     private String descricao;
 
     @NotNull(message = "Localidade é obrigatória")
-    private LocalidadeRequestDTO localidade;
+    private Long idLocalidade;
 
 }

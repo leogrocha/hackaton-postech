@@ -14,15 +14,12 @@ public interface LocalidadeMapper {
     @Mapping(target = "id", source = "localidade.id")
     @Mapping(target = "nome", source = "localidade.nome")
     @Mapping(target = "endereco", source = "localidade.endereco")
+    @Mapping(target = "amenidades", source = "localidade.amenidades" )
     LocalidadeResponseDTO convertToLocalidadeResponseDTO(Localidade localidade);
 
-    @Mapping(target = "nome", source = "localidadeRequest.nome")
-    @Mapping(target = "endereco", source = "localidadeRequest.endereco")
-    Localidade convertToLocalidade(LocalidadeRequestDTO localidadeRequest);
-
-
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "nome", source = "localidadeRequest.nome")
-    @Mapping(target = "endereco", source = "localidadeRequest.endereco")
-    Localidade convertToLocalidadeWithId(LocalidadeRequestDTO localidadeRequest, Long id);
+    @Mapping(target = "id", source = "localidadeResponse.id")
+    @Mapping(target = "nome", source = "localidadeResponse.nome")
+    @Mapping(target = "endereco", source = "localidadeResponse.endereco")
+    @Mapping(target = "amenidades", source = "localidadeResponse.amenidades" )
+    Localidade convertToLocalidade(LocalidadeResponseDTO localidadeResponse);
 }
