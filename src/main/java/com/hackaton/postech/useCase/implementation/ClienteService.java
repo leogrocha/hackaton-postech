@@ -35,6 +35,7 @@ public class ClienteService implements IClienteService {
 
   @Override
   public ClienteResponseDTO getById(Long id) {
+
     return clienteMapper.convertToClienteResponse(findByIdCliente(id));
   }
 

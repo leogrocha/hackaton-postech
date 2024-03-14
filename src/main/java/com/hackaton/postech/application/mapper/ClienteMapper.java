@@ -1,10 +1,7 @@
 package com.hackaton.postech.application.mapper;
 
-import com.hackaton.postech.domain.dto.request.AmenidadeRequestDTO;
 import com.hackaton.postech.domain.dto.request.ClienteRequestDTO;
-import com.hackaton.postech.domain.dto.response.AmenidadeResponseDTO;
 import com.hackaton.postech.domain.dto.response.ClienteResponseDTO;
-import com.hackaton.postech.domain.model.Amenidade;
 import com.hackaton.postech.domain.model.Cliente;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

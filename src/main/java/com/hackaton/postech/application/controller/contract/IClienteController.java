@@ -1,8 +1,6 @@
 package com.hackaton.postech.application.controller.contract;
 
-import com.hackaton.postech.domain.dto.request.AmenidadeRequestDTO;
 import com.hackaton.postech.domain.dto.request.ClienteRequestDTO;
-import com.hackaton.postech.domain.dto.response.AmenidadeResponseDTO;
 import com.hackaton.postech.domain.dto.response.ClienteResponseDTO;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;

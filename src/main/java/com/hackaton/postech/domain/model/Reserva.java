@@ -18,17 +18,17 @@ public class Reserva {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id_reserva")
+  @Column(name = "id")
   private Long id;
 
   @OneToOne
-  @JoinColumn(name = "id_cliente")
+  @JoinColumn(name = "id")
   private Cliente cliente;
 
   private LocalDateTime dataReserva;
 
   @OneToOne
-  @JoinColumn(name = "id_quarto")
+  @JoinColumn(name = "id")
   private Quarto quarto;
 
   private Double valorTotal;

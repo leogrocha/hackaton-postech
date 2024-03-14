@@ -1,12 +1,10 @@
 package com.hackaton.postech.domain.model;
 
-import com.hackaton.postech.domain.dto.request.EnderecoRequestDTO;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import static org.springframework.beans.BeanUtils.copyProperties;
 
 @Data
 @AllArgsConstructor

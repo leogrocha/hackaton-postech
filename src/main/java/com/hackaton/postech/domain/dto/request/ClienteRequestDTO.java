@@ -23,7 +23,7 @@ public class ClienteRequestDTO {
   @CPF(message = "CPF inválido")
   private String cpf;
 
-  private String passporte;
+  private String passaporte;
 
   @NotBlank(message = "Nome  não pode ser nulo ou em branco")
   private String nome;
@@ -38,7 +38,7 @@ public class ClienteRequestDTO {
   @Email(message = "E-mail inválido")
   private String email;
 
-  @NotNull(message = "Endereço é obrigatório")
-  @Valid private EnderecoRequestDTO endereco;
+//  @NotNull(message = "Endereço é obrigatório")
+//  @Valid private EnderecoRequestDTO endereco;
 
 }
