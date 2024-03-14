@@ -3,12 +3,14 @@ package com.hackaton.postech.useCase.contract;
 import com.hackaton.postech.domain.dto.request.ClientRequestDTO;
 import com.hackaton.postech.domain.dto.response.ClientResponseDTO;
 import com.hackaton.postech.domain.model.Client;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
 public interface IClientService {
 
-  List<ClientResponseDTO> findAll();
+  Page<ClientResponseDTO> findAll(PageRequest pageRequest);
 
   ClientResponseDTO findById(Long clientId);
 

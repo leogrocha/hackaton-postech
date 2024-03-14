@@ -1,27 +1,33 @@
 package com.hackaton.postech.application.controller;
 
+import com.hackaton.postech.application.controller.contract.IClientController;
 import com.hackaton.postech.domain.dto.request.ClientRequestDTO;
 import com.hackaton.postech.domain.dto.response.ClientResponseDTO;
 import com.hackaton.postech.useCase.contract.IClientService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("client")
 @AllArgsConstructor
-public class ClientController {
+public class ClientController implements IClientController {
 
   private final IClientService service;
 
-  @GetMapping
-  public ResponseEntity<List<ClientResponseDTO>> findAll() {
-    return ResponseEntity.ok(service.findAll());
+  @Override
+  public ResponseEntity<Page<ClientResponseDTO>>
+  findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
+          @RequestParam(value = "linesPerPage", defaultValue = "10") Integer linesPorPage) {
+    PageRequest pageRequest = PageRequest.of(page, linesPorPage);
+    var clients = service.findAll(pageRequest);
+    return ResponseEntity.ok().body(clients);
   }
 
   @GetMapping("/{clientId}")
@@ -30,13 +36,13 @@ public class ClientController {
   }
 
   @PostMapping
-  public ResponseEntity<ClientResponseDTO> save(@RequestBody ClientRequestDTO clientRequestDTO) {
+  public ResponseEntity<ClientResponseDTO> save(@Valid @RequestBody ClientRequestDTO clientRequestDTO) {
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{clientId}").buildAndExpand(("/{id}")).toUri();
     return ResponseEntity.created(uri).body(service.save(clientRequestDTO));
   }
 
   @PutMapping("/{clientId}")
-  public ResponseEntity<ClientResponseDTO> update(@RequestBody ClientRequestDTO clientRequestDTO, @PathVariable Long clientId) {
+  public ResponseEntity<ClientResponseDTO> update(@RequestBody @Valid ClientRequestDTO clientRequestDTO, @PathVariable Long clientId) {
     return ResponseEntity.ok(service.update(clientId, clientRequestDTO));
   }
 

@@ -1,9 +1,13 @@
 package com.hackaton.postech.application.exceptions;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class ValidationError extends CustomError{
 
   private final List<FieldMessage> errors = new ArrayList<>();
