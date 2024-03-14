@@ -3,7 +3,6 @@ package com.hackaton.postech.useCase.implementation;
 import com.hackaton.postech.application.mapper.ReservaMapper;
 import com.hackaton.postech.domain.dto.request.ReservaRequestDTO;
 import com.hackaton.postech.domain.dto.response.ReservaResponseDTO;
-import com.hackaton.postech.domain.model.Cliente;
 import com.hackaton.postech.domain.model.Reserva;
 import com.hackaton.postech.domain.repository.ReservaRepository;
 import com.hackaton.postech.useCase.contract.IReservaService;
@@ -37,21 +36,39 @@ public class ReservaService implements IReservaService {
 
   @Override
   public ReservaResponseDTO create(ReservaRequestDTO reservaRequestDTO) {
-    return null;
+    var reservaSaved = repository.save(reservaMapper.convertToReserva(reservaRequestDTO));
+
+    return reservaMapper.convertToReservaResponse(reservaSaved);
   }
 
   @Override
   public ReservaResponseDTO update(Long id, ReservaRequestDTO reservaRequestDTO) {
-    return null;
+
+    try {
+      var reserva = repository.getReferenceById(id);
+      var reservaUpdated = reservaMapper.convertToReserva(reservaRequestDTO);
+      reservaUpdated.setId(reserva.getId());
+
+      reserva = repository.save(reservaUpdated);
+      return reservaMapper.convertToReservaResponse(reserva);
+    } catch (EntityNotFoundException exception) {
+      throw new EntityNotFoundException("Reserva não encontrada, id: " + id);
+    }
+
   }
 
   @Override
   public void deleteById(Long id) {
-
+    try {
+      repository.findById(id);
+      repository.deleteById(id);
+    } catch (EntityNotFoundException exception) {
+      throw new EntityNotFoundException("Reserva não encontrada, id: " + id);
+    }
   }
 
   private Reserva findByIdReserva(Long reservaId) {
     return repository.findById(reservaId)
-        .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado na base de dados."));
+        .orElseThrow(() -> new EntityNotFoundException("Reserva não encontrado na base de dados."));
   }
 }

@@ -1,11 +1,10 @@
 package com.hackaton.postech.useCase.implementation;
 
-import com.hackaton.postech.application.mapper.AmenidadeMapper;
+
 import com.hackaton.postech.application.mapper.ClienteMapper;
 import com.hackaton.postech.domain.dto.request.ClienteRequestDTO;
 import com.hackaton.postech.domain.dto.response.ClienteResponseDTO;
 import com.hackaton.postech.domain.model.Cliente;
-import com.hackaton.postech.domain.repository.AmenidadeRepository;
 import com.hackaton.postech.domain.repository.ClienteRepository;
 import com.hackaton.postech.useCase.contract.IClienteService;
 import jakarta.persistence.EntityNotFoundException;

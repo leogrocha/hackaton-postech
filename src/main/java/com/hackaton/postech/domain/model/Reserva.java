@@ -22,13 +22,13 @@ public class Reserva {
   private Long id;
 
   @OneToOne
-  @JoinColumn(name = "id")
+  @JoinColumn(name = "cliente_id")
   private Cliente cliente;
 
   private LocalDateTime dataReserva;
 
   @OneToOne
-  @JoinColumn(name = "id")
+  @JoinColumn(name = "quarto_id")
   private Quarto quarto;
 
   private Double valorTotal;

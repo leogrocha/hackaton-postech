@@ -1,5 +1,6 @@
 package com.hackaton.postech.application.mapper;
 
+import com.hackaton.postech.domain.dto.request.ReservaRequestDTO;
 import com.hackaton.postech.domain.dto.response.ClienteResponseDTO;
 import com.hackaton.postech.domain.dto.response.ReservaResponseDTO;
 import com.hackaton.postech.domain.model.Cliente;
@@ -19,4 +20,14 @@ public interface ReservaMapper {
   @Mapping(target = "itens", source = "reserva.itens")
   @Mapping(target = "services", source = "reserva.services")
   ReservaResponseDTO convertToReservaResponse(Reserva reserva);
+
+  @Mapping(target = "cliente", source = "reservaRequestDTO.cliente")
+  @Mapping(target = "dataReserva", source = "reservaRequestDTO.dataReserva")
+  @Mapping(target = "quarto", source = "reservaRequestDTO.quarto")
+  @Mapping(target = "valorTotal", source = "reservaRequestDTO.valorTotal")
+  @Mapping(target = "confirmacaoEmail", source = "reservaRequestDTO.confirmacaoEmail")
+  @Mapping(target = "itens", source = "reservaRequestDTO.itens")
+  @Mapping(target = "services", source = "reservaRequestDTO.services")
+  Reserva convertToReserva(ReservaRequestDTO reservaRequestDTO);
 }
+
