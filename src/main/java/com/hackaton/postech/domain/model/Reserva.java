@@ -49,7 +49,7 @@ public class Reserva {
       joinColumns = @JoinColumn(name = "id_reserva"),
       inverseJoinColumns = @JoinColumn(name = "id_servico")
   )
-  private Set<Servicos> services = new HashSet<>();
+  private Set<Servicos> servicos = new HashSet<>();
 
 
 }

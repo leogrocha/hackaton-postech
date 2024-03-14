@@ -9,6 +9,11 @@ public class ServicosRequestDTO {
   private String descricao;
 
   @Negative(message = "Valor não pode ser negativo")
-  @NotBlank(message = "descricao é obrigatório")
+  @NotBlank(message = "Valor é obrigatório")
   private Double valor;
+
+  public ServicosRequestDTO(String descricao, Double valor) {
+    this.descricao = descricao;
+    this.valor = valor;
+  }
 }

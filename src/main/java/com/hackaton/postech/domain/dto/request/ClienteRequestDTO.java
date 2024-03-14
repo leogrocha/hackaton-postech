@@ -38,7 +38,7 @@ public class ClienteRequestDTO {
   @Email(message = "E-mail inválido")
   private String email;
 
-//  @NotNull(message = "Endereço é obrigatório")
-//  @Valid private EnderecoRequestDTO endereco;
+  @NotNull(message = "Endereço é obrigatório")
+  @Valid private EnderecoRequestDTO endereco;
 
 }

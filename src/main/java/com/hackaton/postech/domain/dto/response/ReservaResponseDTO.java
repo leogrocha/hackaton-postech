@@ -21,6 +21,8 @@ import java.util.List;
 @AllArgsConstructor
 public class ReservaResponseDTO {
 
+  private Long id;
+
   @NotNull(message = "Cliente é obrigatório")
   private ClienteResponseDTO cliente;
 
