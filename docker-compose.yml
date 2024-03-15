@@ -1,11 +1,30 @@
 version: '3'
 services:
+  mysql-db:
+    image: mysql:8.0.36
+    environment:
+      MYSQL_DATABASE: 'postech'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - "3306:3306"
+    networks:
+      - postech-network
+
   postech-service:
     build: .
     ports:
       - "8080:8080"
+    depends_on:
+      - mysql-db
     networks:
       - postech-network
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/postech?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
 
 networks:
   postech-network:
