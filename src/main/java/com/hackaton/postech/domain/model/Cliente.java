@@ -28,7 +28,7 @@ public class Cliente {
   private String email;
 
   @OneToOne
-  @JoinColumn(name = "id")
+  @JoinColumn(name = "endereco_id")
   private Endereco endereco;
 
   @OneToOne
