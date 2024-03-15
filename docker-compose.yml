@@ -1,0 +1,12 @@
+version: '3'
+services:
+  postech-service:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - postech-network
+
+networks:
+  postech-network:
+    driver: bridge
