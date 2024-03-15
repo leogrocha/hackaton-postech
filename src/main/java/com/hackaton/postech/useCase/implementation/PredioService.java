@@ -1,16 +1,13 @@
 package com.hackaton.postech.useCase.implementation;
 
-import com.hackaton.postech.application.mapper.LocalidadeMapper;
 import com.hackaton.postech.application.mapper.PredioMapper;
 import com.hackaton.postech.domain.dto.request.PredioRequestDTO;
-import com.hackaton.postech.domain.dto.response.LocalidadeResponseDTO;
 import com.hackaton.postech.domain.dto.response.PredioResponseDTO;
 import com.hackaton.postech.domain.model.Predio;
 import com.hackaton.postech.domain.repository.PredioRepository;
 import com.hackaton.postech.useCase.contract.IPredioService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,18 +18,8 @@ public class PredioService implements IPredioService {
 
     private static final String PREDIO_NOT_FOUND = "Not found Predio ID: ";
 
-    @Autowired
     private final PredioRepository repository;
-
-    @Autowired
     private final PredioMapper predioMapper;
-
-    @Autowired
-    private final LocalidadeService localidadeService;
-
-    @Autowired
-    private final LocalidadeMapper localidadeMapper;
-
 
     @Override
     public List<PredioResponseDTO> getAll() {

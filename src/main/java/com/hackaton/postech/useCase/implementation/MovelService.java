@@ -8,7 +8,6 @@ import com.hackaton.postech.domain.repository.MovelRepository;
 import com.hackaton.postech.useCase.contract.IMovelService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,19 +20,8 @@ public class MovelService implements IMovelService {
 
     private static final String MOVEL_NOT_FOUND = "Not found movel ID: ";
 
-
     private static MovelRepository repository;
-
-    @Autowired
-    public void setRepository(MovelRepository repository) {
-        MovelService.repository = repository;
-    }
-
-    @Autowired
     private final MovelMapper movelMapper;
-
-
-
 
     public static List<Movel> obterOuCriarMoveisPadrao(List<String> nomesMoveisPadrao) {
         List<Movel> moveisPadrao = new ArrayList<>();

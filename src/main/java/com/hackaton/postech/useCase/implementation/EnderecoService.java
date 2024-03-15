@@ -8,7 +8,6 @@ import com.hackaton.postech.domain.repository.EnderecoRepository;
 import com.hackaton.postech.useCase.contract.IEnderecoService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,13 +17,8 @@ import java.util.List;
 public class EnderecoService implements IEnderecoService {
 
     private static final String ENDERECO_NOT_FOUND = "Not found endereço ID: ";
-
-    @Autowired
     private final EnderecoRepository repository;
-
-    @Autowired
     private final EnderecoMapper enderecoMapper;
-
 
     @Override
     public List<EnderecoResponseDTO> getAll() {

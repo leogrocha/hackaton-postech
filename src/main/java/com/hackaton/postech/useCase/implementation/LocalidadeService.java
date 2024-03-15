@@ -2,21 +2,14 @@ package com.hackaton.postech.useCase.implementation;
 
 import com.hackaton.postech.application.mapper.EnderecoMapper;
 import com.hackaton.postech.application.mapper.LocalidadeMapper;
-import com.hackaton.postech.domain.dto.request.EnderecoRequestDTO;
 import com.hackaton.postech.domain.dto.request.LocalidadeRequestDTO;
-import com.hackaton.postech.domain.dto.response.EnderecoResponseDTO;
 import com.hackaton.postech.domain.dto.response.LocalidadeResponseDTO;
 import com.hackaton.postech.domain.model.Endereco;
 import com.hackaton.postech.domain.model.Localidade;
-import com.hackaton.postech.domain.repository.EnderecoRepository;
 import com.hackaton.postech.domain.repository.LocalidadeRepository;
-import com.hackaton.postech.useCase.contract.IEnderecoService;
 import com.hackaton.postech.useCase.contract.ILocalidadeService;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.ConstraintViolationException;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -28,18 +21,10 @@ public class LocalidadeService implements ILocalidadeService {
 
     private static final String LOCALIDADE_NOT_FOUND = "Not found localidade ID: ";
 
-    @Autowired
     private final LocalidadeRepository repository;
-
-    @Autowired
     private final LocalidadeMapper localidadeMapper;
-
-    @Autowired
     private final EnderecoService enderecoService;
-
-    @Autowired
     private final EnderecoMapper enderecoMapper;
-
 
     @Override
     public List<LocalidadeResponseDTO> getAll() {
