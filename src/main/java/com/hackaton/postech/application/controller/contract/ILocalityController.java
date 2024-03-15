@@ -3,19 +3,21 @@ package com.hackaton.postech.application.controller.contract;
 import com.hackaton.postech.domain.dto.request.LocalityRequestDTO;
 import com.hackaton.postech.domain.dto.response.LocalityResponseDTO;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 public interface ILocalityController {
 
     @GetMapping
-    List<LocalityResponseDTO> getAll();
+    Page<LocalityResponseDTO> findAll(Integer page, Integer linesPorPage);
 
     @GetMapping("{localityId}")
-    LocalityResponseDTO getById(@PathVariable Long localityId);
+    LocalityResponseDTO findById(@PathVariable Long localityId);
 
     @PostMapping
-    LocalityResponseDTO create(@RequestBody @Valid LocalityRequestDTO localityRequestDTO);
+    LocalityResponseDTO save(@RequestBody @Valid LocalityRequestDTO localityRequestDTO);
 
     @PutMapping("{localityId}")
     LocalityResponseDTO update(@PathVariable Long localityId, @RequestBody @Valid LocalityRequestDTO localityRequestDTO);
