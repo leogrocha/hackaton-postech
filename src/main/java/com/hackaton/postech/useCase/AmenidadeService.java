@@ -1,4 +1,4 @@
-package com.hackaton.postech.useCase.implementation;
+package com.hackaton.postech.useCase;
 
 import com.hackaton.postech.application.mapper.AmenidadeMapper;
 import com.hackaton.postech.domain.dto.request.AmenidadeRequestDTO;

@@ -2,6 +2,7 @@ package com.hackaton.postech.domain.model;
 
 import com.hackaton.postech.domain.dto.request.AmenidadeRequestDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "amenidades")
 public class Amenidade {
 

@@ -1,4 +1,4 @@
-package com.hackaton.postech.useCase.implementation;
+package com.hackaton.postech.useCase;
 
 import com.hackaton.postech.application.mapper.EnderecoMapper;
 import com.hackaton.postech.application.mapper.LocalidadeMapper;

@@ -1,9 +1,13 @@
 package com.hackaton.postech.domain.enums;
 
-import com.hackaton.postech.domain.model.Movel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
+@AllArgsConstructor
 public enum TipoQuarto {
 
     STANDARD_SIMPLES(2, "1 x Queen Size",
@@ -31,40 +35,4 @@ public enum TipoQuarto {
     private final String tipoBanheiro;
     private final double valorDiaria;
     private final int quantidadeQuartos;
-
-
-    TipoQuarto(int capacidadePessoas, String qtdeCamas, List<String> moveis, String tipoBanheiro, double valorDiaria, int quantidadeQuartos) {
-        this.capacidadePessoas = capacidadePessoas;
-        this.qtdeCamas = qtdeCamas;
-        this.moveis = moveis;
-        this.tipoBanheiro = tipoBanheiro;
-        this.valorDiaria = valorDiaria;
-        this.quantidadeQuartos = quantidadeQuartos;
-    }
-
-    public int getCapacidadePessoas() {
-        return capacidadePessoas;
-    }
-
-    public String getQtdeCamas() {
-        return qtdeCamas;
-    }
-
-    public List<String> getMoveis() {
-        return moveis;
-    }
-
-    public String getTipoBanheiro() {
-        return tipoBanheiro;
-    }
-
-    public double getValorDiaria() {
-        return valorDiaria;
-    }
-
-    public int getQuantidadeQuartos() {
-        return quantidadeQuartos;
-    }
-
-
 }

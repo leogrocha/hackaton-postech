@@ -1,4 +1,4 @@
-package com.hackaton.postech.application.handlers;
+package com.hackaton.postech.application.exceptions.handlers;
 
 import com.hackaton.postech.application.exceptions.CustomError;
 import com.hackaton.postech.application.exceptions.DatabaseException;

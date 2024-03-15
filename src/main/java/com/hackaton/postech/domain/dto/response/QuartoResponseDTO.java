@@ -3,7 +3,7 @@ package com.hackaton.postech.domain.dto.response;
 import com.hackaton.postech.domain.dto.request.QuartoRequestDTO;
 import com.hackaton.postech.domain.enums.TipoQuarto;
 import com.hackaton.postech.domain.model.Movel;
-import com.hackaton.postech.useCase.implementation.MovelService;
+import com.hackaton.postech.useCase.MovelService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

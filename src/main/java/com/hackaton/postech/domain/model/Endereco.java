@@ -35,8 +35,4 @@ public class Endereco {
 
     @OneToOne(mappedBy = "endereco", cascade = CascadeType.REFRESH)
     private Localidade localidade;
-
-
-
-
 }

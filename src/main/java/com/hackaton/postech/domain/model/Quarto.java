@@ -1,10 +1,8 @@
 package com.hackaton.postech.domain.model;
 
-import com.hackaton.postech.application.mapper.PredioMapper;
 import com.hackaton.postech.domain.dto.request.QuartoRequestDTO;
-import com.hackaton.postech.domain.dto.response.QuartoResponseDTO;
 import com.hackaton.postech.domain.enums.TipoQuarto;
-import com.hackaton.postech.useCase.implementation.MovelService;
+import com.hackaton.postech.useCase.MovelService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -52,4 +50,3 @@ public class Quarto {
         this.moveis = MovelService.obterOuCriarMoveisPadrao(this.tipoQuarto.getMoveis());
     }
 }
-
