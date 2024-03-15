@@ -1,16 +1,12 @@
 package com.hackaton.postech.useCase.implementation;
 
 import com.hackaton.postech.application.exceptions.NotFoundException;
-import com.hackaton.postech.application.mapper.RoomMapper;
 import com.hackaton.postech.domain.dto.request.RoomRequestDTO;
 import com.hackaton.postech.domain.dto.response.RoomResponseDTO;
 import com.hackaton.postech.domain.model.Room;
 import com.hackaton.postech.domain.repository.RoomRepository;
 import com.hackaton.postech.useCase.contract.IRoomService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

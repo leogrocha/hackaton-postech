@@ -1,16 +1,12 @@
 package com.hackaton.postech.useCase.implementation;
 
-import com.hackaton.postech.application.mapper.AmenitiesMapper;
 import com.hackaton.postech.domain.dto.request.AmenitiesRequestDTO;
-import com.hackaton.postech.domain.dto.request.LocalityRequestDTO;
 import com.hackaton.postech.domain.dto.response.AmenitiesResponseDTO;
 import com.hackaton.postech.domain.model.Amenities;
 import com.hackaton.postech.domain.repository.AmenitiesRepository;
 import com.hackaton.postech.useCase.contract.IAmenitiesService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

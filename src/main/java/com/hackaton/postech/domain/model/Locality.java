@@ -1,6 +1,7 @@
 package com.hackaton.postech.domain.model;
 
 import com.hackaton.postech.domain.dto.request.LocalityRequestDTO;
+import com.hackaton.postech.domain.dto.request.LocalityUpdateDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.BeanUtils;
@@ -32,8 +33,8 @@ public class Locality {
     @OneToMany(mappedBy = "aminities", cascade = CascadeType.ALL)
     private List<Amenities> amenities;
 
-    @OneToMany(mappedBy = "locality", cascade = CascadeType.ALL)
-    private List<Building> buildins;
+    @OneToMany(mappedBy = "buildings", cascade = CascadeType.ALL)
+    private List<Building> buildings;
 
     public static Locality ofSave(LocalityRequestDTO localityRequestDTO) {
         Locality locality = new Locality();
@@ -41,6 +42,9 @@ public class Locality {
         return locality;
     }
 
-    public static Locality ofUpdate(LocalityRequestDTO localityRequestDTO) {
+    public static Locality ofUpdate(LocalityUpdateDTO localityUpdateDTO) {
+        Locality locality = new Locality();
+        BeanUtils.copyProperties(localityUpdateDTO, locality);
+        return locality;
     }
 }

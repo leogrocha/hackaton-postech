@@ -1,22 +1,14 @@
 package com.hackaton.postech.useCase.implementation;
 
 import com.hackaton.postech.application.exceptions.NotFoundException;
-import com.hackaton.postech.application.mapper.LocalityMapper;
-import com.hackaton.postech.domain.dto.request.AddressRequestDTO;
-import com.hackaton.postech.domain.dto.request.BuildingUpdateDTO;
 import com.hackaton.postech.domain.dto.request.LocalityRequestDTO;
 import com.hackaton.postech.domain.dto.request.LocalityUpdateDTO;
-import com.hackaton.postech.domain.dto.response.ClientResponseDTO;
 import com.hackaton.postech.domain.dto.response.LocalityResponseDTO;
-import com.hackaton.postech.domain.model.Building;
-import com.hackaton.postech.domain.model.Client;
 import com.hackaton.postech.domain.model.Locality;
 import com.hackaton.postech.domain.repository.LocalityRepository;
 import com.hackaton.postech.useCase.contract.ILocalityService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -52,13 +44,18 @@ public class LocalityService implements ILocalityService {
         return LocalityResponseDTO.of(localitySaved);
     }
 
+    @Override
+    public LocalityResponseDTO update(Long localityId, LocalityRequestDTO localityRequestDTO) {
+        return null;
+    }
+
     @Transactional
     public LocalityResponseDTO update(Long localityId, LocalityUpdateDTO localityUpdateDTO) {
 
         try {
 
             var localityUpdate = repository.getReferenceById(localityId);
-            localityUpdate = repository.save(Locality.ofUpdate(localityRequestDTO));
+            localityUpdate = repository.save(Locality.ofUpdate(localityUpdateDTO));
 
             return LocalityResponseDTO.of(localityUpdate);
         } catch (EntityNotFoundException exception) {
@@ -68,7 +65,7 @@ public class LocalityService implements ILocalityService {
 
     @Transactional
     public void deleteById(Long id) {
-        getById(id);
+//        getById(id);
         repository.deleteById(id);
     }
 

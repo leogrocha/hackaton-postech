@@ -1,6 +1,6 @@
 package com.hackaton.postech.useCase.implementation;
 
-import com.hackaton.postech.application.mapper.AddressMapper;
+
 import com.hackaton.postech.domain.dto.request.AddressRequestDTO;
 import com.hackaton.postech.domain.dto.response.AddressResponseDTO;
 import com.hackaton.postech.domain.model.Address;
@@ -20,7 +20,7 @@ public class AddressService implements IAddressService {
 
     private final AddressRepository repository;
 
-    private final AddressMapper addressMapper;
+
 
 
     @Override
